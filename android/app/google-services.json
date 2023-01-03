@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1093654951911",
+    "project_id": "hotelio-apps-855c2",
+    "storage_bucket": "hotelio-apps-855c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093654951911:android:f20159672964897f52ef42",
+        "android_client_info": {
+          "package_name": "com.app.hotelio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093654951911-3rib4kqd16sk9ss128t7kijctf8ap2iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkP4GxZbrcgRkghnBgNCktpuoM5A05Wt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093654951911-3rib4kqd16sk9ss128t7kijctf8ap2iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
