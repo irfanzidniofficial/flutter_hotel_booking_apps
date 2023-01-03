@@ -5,6 +5,7 @@ import 'package:flutter_hotel_booking_apps/config/app_route.dart';
 import 'package:flutter_hotel_booking_apps/config/session.dart';
 import 'package:flutter_hotel_booking_apps/page/home_page.dart';
 import 'package:flutter_hotel_booking_apps/page/intro_page.dart';
+import 'package:flutter_hotel_booking_apps/page/signin_page.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         },
         AppRoute.intro: (context) => const IntroPage(),
         AppRoute.home: (context) => const HomePage(),
-        AppRoute.signin: (context) => const IntroPage(),
+        AppRoute.signin: (context) => SigninPage(),
         AppRoute.detail: (context) => const IntroPage(),
         AppRoute.checkout: (context) => const IntroPage(),
         AppRoute.checkoutSuccess: (context) => const IntroPage(),
