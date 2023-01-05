@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hotel_booking_apps/config/app_asset.dart';
 import 'package:flutter_hotel_booking_apps/config/app_color.dart';
 import 'package:flutter_hotel_booking_apps/config/app_format.dart';
+import 'package:flutter_hotel_booking_apps/config/app_route.dart';
 import 'package:flutter_hotel_booking_apps/controller/c_user.dart';
 import 'package:flutter_hotel_booking_apps/model/booking.dart';
 import 'package:flutter_hotel_booking_apps/model/hotel.dart';
@@ -185,7 +186,9 @@ class DetailPage extends StatelessWidget {
           ),
           ButtonCustom(
             label: 'Booking Now',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, AppRoute.checkout, arguments: hotel);
+            },
           )
         ],
       ),
