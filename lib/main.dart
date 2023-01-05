@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hotel_booking_apps/config/app_color.dart';
 import 'package:flutter_hotel_booking_apps/config/app_route.dart';
 import 'package:flutter_hotel_booking_apps/config/session.dart';
+import 'package:flutter_hotel_booking_apps/page/detail_page.dart';
 import 'package:flutter_hotel_booking_apps/page/home_page.dart';
 import 'package:flutter_hotel_booking_apps/page/intro_page.dart';
 import 'package:flutter_hotel_booking_apps/page/signin_page.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
         AppRoute.intro: (context) => const IntroPage(),
         AppRoute.home: (context) => HomePage(),
         AppRoute.signin: (context) => SigninPage(),
-        AppRoute.detail: (context) => const IntroPage(),
+        AppRoute.detail: (context) => DetailPage(),
         AppRoute.checkout: (context) => const IntroPage(),
         AppRoute.checkoutSuccess: (context) => const IntroPage(),
         AppRoute.detailBooking: (context) => const IntroPage(),
