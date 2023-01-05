@@ -4,6 +4,7 @@ import 'package:flutter_hotel_booking_apps/config/app_color.dart';
 import 'package:flutter_hotel_booking_apps/controller/c_home.dart';
 import 'package:flutter_hotel_booking_apps/page/history_page.dart';
 import 'package:flutter_hotel_booking_apps/page/nearby_page.dart';
+import 'package:flutter_hotel_booking_apps/widget/coming_soon.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,10 +21,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
+        if (cHome.indexPage == 0) {
+          return NearbyPage();
+        }
         if (cHome.indexPage == 1) {
           return const HistoryPage();
         }
-        return NearbyPage();
+        return const ComingSoon();
       }),
       bottomNavigationBar: Obx(() {
         return Material(

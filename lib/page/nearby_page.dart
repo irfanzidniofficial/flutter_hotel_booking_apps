@@ -3,6 +3,7 @@ import 'package:flutter_hotel_booking_apps/config/app_asset.dart';
 import 'package:flutter_hotel_booking_apps/config/app_color.dart';
 import 'package:flutter_hotel_booking_apps/config/app_format.dart';
 import 'package:flutter_hotel_booking_apps/config/app_route.dart';
+import 'package:flutter_hotel_booking_apps/config/session.dart';
 import 'package:flutter_hotel_booking_apps/controller/c_nearby.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -248,13 +249,32 @@ class NearbyPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-          child: Image.asset(
-            AppAsset.profile,
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            showMenu(
+              context: context,
+              position: const RelativeRect.fromLTRB(16, 16, 0, 0),
+              items: [
+                const PopupMenuItem(
+                  value: 'logout',
+                  child: Text('Logout'),
+                )
+              ],
+            ).then((value) {
+              if (value == 'logout') {
+                Session.clearUser();
+                Navigator.pushReplacementNamed(context, AppRoute.signin);
+              }
+            });
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Image.asset(
+              AppAsset.profile,
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Column(
