@@ -5,7 +5,7 @@ class Booking {
     required this.cover,
     required this.name,
     required this.location,
-    required this.data,
+    required this.date,
     required this.guest,
     required this.breakfast,
     required this.checkInTime,
@@ -22,7 +22,7 @@ class Booking {
   String cover;
   String name;
   String location;
-  String data;
+  String date;
   int guest;
   String breakfast;
   String checkInTime;
@@ -39,7 +39,7 @@ class Booking {
         cover: json["cover"],
         name: json["name"],
         location: json["location"],
-        data: json["data"],
+        date: json["data"],
         guest: json["guest"],
         breakfast: json["breakfast"],
         checkInTime: json["check_in_time"],
@@ -57,7 +57,7 @@ class Booking {
         "cover": cover,
         "name": name,
         "location": location,
-        "data": data,
+        "date": date,
         "guest": guest,
         "breakfast": breakfast,
         "check_in_time": checkInTime,
@@ -76,7 +76,7 @@ Booking get initBooking => Booking(
       cover: '',
       name: '',
       location: '',
-      data: '',
+      date: '',
       guest: 0,
       breakfast: '',
       checkInTime: '',

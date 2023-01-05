@@ -5,6 +5,7 @@ import 'package:flutter_hotel_booking_apps/config/app_route.dart';
 import 'package:flutter_hotel_booking_apps/config/session.dart';
 import 'package:flutter_hotel_booking_apps/page/checkout_page.dart';
 import 'package:flutter_hotel_booking_apps/page/checkout_success_page.dart';
+import 'package:flutter_hotel_booking_apps/page/detail_booking_page.dart';
 import 'package:flutter_hotel_booking_apps/page/detail_page.dart';
 import 'package:flutter_hotel_booking_apps/page/home_page.dart';
 import 'package:flutter_hotel_booking_apps/page/intro_page.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
         AppRoute.detail: (context) => DetailPage(),
         AppRoute.checkout: (context) => CheckoutPage(),
         AppRoute.checkoutSuccess: (context) => const CheckoutSuccessPage(),
-        AppRoute.detailBooking: (context) => const IntroPage(),
+        AppRoute.detailBooking: (context) => const DetailBookingPage(),
       },
     );
   }

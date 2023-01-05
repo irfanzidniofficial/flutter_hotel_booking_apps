@@ -267,10 +267,12 @@ class NearbyPage extends StatelessWidget {
                   .titleLarge!
                   .copyWith(fontWeight: FontWeight.w900),
             ),
-            const Text(
-              '100 hotels',
-              style: TextStyle(color: Colors.grey, fontSize: 12),
-            ),
+            Obx(() {
+              return Text(
+                '${cNearby.listHotel.length} hotels',
+                style: const TextStyle(color: Colors.grey, fontSize: 12),
+              );
+            }),
           ],
         )
       ]),

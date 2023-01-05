@@ -3,22 +3,13 @@ import 'package:flutter_hotel_booking_apps/config/app_asset.dart';
 import 'package:flutter_hotel_booking_apps/config/app_color.dart';
 import 'package:flutter_hotel_booking_apps/config/app_format.dart';
 import 'package:flutter_hotel_booking_apps/model/booking.dart';
-import 'package:flutter_hotel_booking_apps/source/booking_source.dart';
-import 'package:flutter_hotel_booking_apps/widget/button_custom.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
-import '../config/app_route.dart';
-import '../controller/c_user.dart';
-import '../model/hotel.dart';
-
-class CheckoutPage extends StatelessWidget {
-  CheckoutPage({super.key});
-  final cUser = Get.put(CUser());
+class DetailBookingPage extends StatelessWidget {
+  const DetailBookingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Hotel hotel = ModalRoute.of(context)!.settings.arguments as Hotel;
+    Booking booking = ModalRoute.of(context)!.settings.arguments as Booking;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +17,7 @@ class CheckoutPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         title: const Text(
-          "Checkout",
+          "Detail Booking",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -37,45 +28,12 @@ class CheckoutPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          header(hotel, context),
+          header(booking, context),
           const SizedBox(height: 16),
-          roomDetails(context),
+          roomDetails(booking, context),
           const SizedBox(height: 16),
           paymentMethod(context),
           const SizedBox(height: 20),
-          ButtonCustom(
-            label: 'Procced to Payment',
-            isExpand: true,
-            onTap: () {
-              BookingSource.addBooking(
-                cUser.data.id!,
-                Booking(
-                  id: '',
-                  idHotel: hotel.id,
-                  cover: hotel.cover,
-                  name: hotel.name,
-                  location: hotel.location,
-                  date: DateFormat('yyyy-MM-dd').format(
-                    DateTime.now(),
-                  ),
-                  guest: 1,
-                  breakfast: 'Included',
-                  checkInTime: '08.00 WIB',
-                  night: 2,
-                  serviceFee: 6,
-                  activities: 40,
-                  totalPayment: hotel.price + 2 + 6 + 40,
-                  status: 'PAID',
-                  isDone: false,
-                ),
-              );
-              Navigator.pushNamed(
-                context,
-                AppRoute.checkoutSuccess,
-                arguments: hotel,
-              );
-            },
-          )
         ],
       ),
     );
@@ -145,7 +103,7 @@ class CheckoutPage extends StatelessWidget {
     );
   }
 
-  Container roomDetails(BuildContext context) {
+  Container roomDetails(Booking booking, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -166,22 +124,32 @@ class CheckoutPage extends StatelessWidget {
           itemRoomDetail(
             context,
             'Date',
-            AppFormat.date(DateTime.now().toIso8601String()),
+            AppFormat.date(booking.date),
           ),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Guest', '2 Guest'),
+          itemRoomDetail(context, 'Guest', '${booking.guest} Guest'),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Breakfast', 'Included'),
+          itemRoomDetail(context, 'Breakfast', booking.breakfast),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Check-in Time', '2 Guest'),
+          itemRoomDetail(context, 'Check-in Time', booking.checkInTime),
           const SizedBox(height: 8),
-          itemRoomDetail(context, '1 night', AppFormat.currency(12900)),
+          itemRoomDetail(
+              context, '${booking.night} night', AppFormat.currency(12900)),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Service fee', AppFormat.currency(50)),
+          itemRoomDetail(context, 'Service fee',
+              AppFormat.currency(booking.serviceFee.toDouble())),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Activities', AppFormat.currency(350)),
+          itemRoomDetail(
+            context,
+            'Activities',
+            AppFormat.currency(booking.activities.toDouble()),
+          ),
           const SizedBox(height: 8),
-          itemRoomDetail(context, 'Total Payment', AppFormat.currency(350)),
+          itemRoomDetail(
+            context,
+            'Total Payment',
+            AppFormat.currency(booking.totalPayment.toDouble()),
+          ),
           const SizedBox(height: 8),
         ],
       ),
@@ -206,7 +174,7 @@ class CheckoutPage extends StatelessWidget {
     );
   }
 
-  Container header(Hotel hotel, BuildContext context) {
+  Container header(Booking booking, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -218,7 +186,7 @@ class CheckoutPage extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              hotel.cover,
+              booking.cover,
               fit: BoxFit.cover,
               height: 70,
               width: 90,
@@ -230,13 +198,13 @@ class CheckoutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  hotel.name,
+                  booking.name,
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                 ),
                 Text(
-                  hotel.location,
+                  booking.location,
                   style: const TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w300,
